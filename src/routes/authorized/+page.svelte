@@ -2,40 +2,20 @@
 	export let data;
 </script>
 
-<main>
-	<h1>You've been Authenticated</h1>
-	<p>Copy the code below and paste it into your terminal to authenticate the CLI.</p>
-	<div class="container">
-		<input class="code" value={data.res} readonly />
-		<button
-			on:click={() => {
-				navigator.clipboard.writeText(data.res);
-			}}
-		>
-			<span class="material-symbols-outlined"> content_copy </span>
-		</button>
-	</div>
-</main>
+<h1>You've been Authenticated</h1>
+<p>Copy the code below and paste it into your terminal to authenticate the CLI.</p>
+<div class="container">
+	<input class="code" value={data.res} readonly />
+	<button
+		on:click={() => {
+			navigator.clipboard.writeText(data.res);
+		}}
+	>
+		<span class="material-symbols-outlined"> content_copy </span>
+	</button>
+</div>
 
 <style>
-	:global(body),
-	:global(html) {
-		margin: 0;
-		padding: 0;
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
-			Geneva, Verdana, sans-serif;
-	}
-
-	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		background-color: #222;
-		color: white;
-	}
-
 	.container {
 		display: flex;
 		align-items: center;

@@ -1,4 +1,5 @@
 import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private';
+import { error } from '@sveltejs/kit';
 
 export async function load({ url, fetch }) {
 	const code = url.searchParams.get('code') as string;
@@ -19,6 +20,10 @@ export async function load({ url, fetch }) {
 	});
 
 	const data = await res.json();
+
+	if (!res.ok) {
+		throw error(400, data.error_description);
+	}
 
 	return { res: btoa(`${data.access_token}+${data.refresh_token}`) };
 }

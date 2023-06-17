@@ -19,6 +19,10 @@ export async function POST({ fetch, request }) {
 		body
 	});
 
+	if (!res.ok) {
+		return json({ error: 'Invalid refresh token' }, { status: 401 });
+	}
+
 	const data = await res.json();
 
 	return json({ access_token: data.access_token });
